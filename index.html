@@ -2,33 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Facebook Mockup</title>
-    <style>
-        .hidden { display: none !important; }
-        /* Add basic styles for .login-container and .main-content */
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Profile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="loginScreen" class="login-container">
-        <form onsubmit="handleLogin(event)">
-            <button type="submit">Log In</button>
-        </form>
-    </div>
-    <div id="feedScreen" class="main-content hidden">
-        <textarea id="postText"></textarea>
-        <button onclick="submitPost()">Post</button>
-        <div id="postFeed"></div>
-    </div>
-    <script>
-        function handleLogin(e) {
-            e.preventDefault();
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('feedScreen').classList.remove('hidden');
-        }
-        function submitPost() {
-            const text = document.getElementById('postText').value;
-            // Add code to create and append post to #postFeed
-        }
-    </script>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">SocialNetwork</div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Messages</a>
+            <a href="#">Notifications</a>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="profile-container">
+        
+        <!-- Header Section (Cover & Avatar) -->
+        <header class="profile-header">
+            <div class="cover-photo"></div>
+            <div class="profile-avatar-bar">
+                <div class="avatar"></div>
+                <div class="profile-name-details">
+                    <h1>Jane Doe</h1>
+                    <p>500 Friends</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Section -->
+        <div class="content-layout">
+            
+            <!-- Sidebar (Bio / Info) -->
+            <aside class="sidebar">
+                <div class="card">
+                    <h3>Intro</h3>
+                    <p class="bio">Frontend Developer & Tech Enthusiast.</p>
+                    <ul class="info-list">
+                        <li>Lives in San Francisco, CA</li>
+                        <li>Followed by 1,200 people</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Feed (Posts) -->
+            <section class="feed">
+                <!-- Create Post Card -->
+                <div class="card create-post">
+                    <input type="text" placeholder="What's on your mind?">
+                    <button class="btn-post">Post</button>
+                </div>
+
+                <!-- Sample Post Card -->
+                <div class="card post">
+                    <div class="post-header">
+                        <div class="mini-avatar"></div>
+                        <div>
+                            <h4>Jane Doe</h4>
+                            <span class="post-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="post-body">
+                        <p>Just launched my new web project! Feedback is welcome.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button>Like</button>
+                        <button>Comment</button>
+                        <button>Share</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
 </body>
 </html>
