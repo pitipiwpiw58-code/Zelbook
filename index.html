@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook Mockup</title>
+    <style>
+        .hidden { display: none !important; }
+        /* Add basic styles for .login-container and .main-content */
+    </style>
+</head>
+<body>
+    <div id="loginScreen" class="login-container">
+        <form onsubmit="handleLogin(event)">
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+    <div id="feedScreen" class="main-content hidden">
+        <textarea id="postText"></textarea>
+        <button onclick="submitPost()">Post</button>
+        <div id="postFeed"></div>
+    </div>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('feedScreen').classList.remove('hidden');
+        }
+        function submitPost() {
+            const text = document.getElementById('postText').value;
+            // Add code to create and append post to #postFeed
+        }
+    </script>
+</body>
+</html>
