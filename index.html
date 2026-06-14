@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+ <html lang="en">
+      <head>
+           <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>zelbook</title> 
+  <style> * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; } body { background-color: #f0f2f5; color: #1c1e21; padding-bottom: 50px; } header { background-color: #ffffff; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; } .fb-logo { color: #1877f2; font-size: 40px; font-weight: bold; text-decoration: none; letter-spacing: -2px; } .profile-container { max-width: 1095px; margin: 0 auto; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.1); } .cover-area { position: relative; width: 100%; height: 350px; background-color: #cbd5e1; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; overflow: hidden; } #cover-img { width: 100%; height: 100%; object-fit: cover; } .btn-change-cover { position: absolute; bottom: 16px; right: 32px; background: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.2); } .profile-header-details { display: flex; align-items: flex-end; padding: 0 32px 32px 32px; position: relative; border-bottom: 1px solid #e4e6eb; } .pfp-wrapper { position: relative; margin-top: -30px; width: 168px; height: 168px; } #profile-img { width: 168px; height: 168px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; background: #fff; } .btn-change-pfp { position: absolute; bottom: 8px; right: 8px; background: #e4e6eb; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; font-weight: bold; } .profile-name-area { margin-left: 24px; margin-bottom: 16px; flex-grow: 1; } .profile-name-area h1 { font-size: 32px; font-weight: 700; } .profile-name-area p { color: #65676b; font-weight: 600; margin-top: 4px; } .main-content { max-width: 1030px; margin: 16px auto 0 auto; display: flex; gap: 16px; padding: 0 16px; } .left-col { flex: 2; display: flex; flex-direction: column; gap: 16px; } .right-col { flex: 3; display: flex; flex-direction: column; gap: 16px; } .card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); } .card h2 { font-size: 20px; margin-bottom: 12px; } .intro-item { margin-bottom: 12px; font-size: 15px; color: #050505; } .create-post-header { display: flex; gap: 8px; align-items: center; border-bottom: 1px solid #e4e6eb; padding-bottom: 12px; margin-bottom: 12px; } .small-pfp { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; } .create-post-header textarea { flex-grow: 1; border: none; background: #f0f2f5; border-radius: 20px; padding: 10px 16px; resize: none; outline: none; font-size: 15px; height: 40px; } .post-actions-panel { display: flex; justify-content: space-between; align-items: center; } .file-input-label { background: #f0f2f5; padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; } .btn-post { background: #1877f2; color: #fff; border: none; padding: 8px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; } .post { margin-top: 16px; } .post-author-info { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; } .post-author-info h3 { font-size: 15px; font-weight: 600; } .post-author-info span { font-size: 12px; color: #65676b; } .post-text { font-size: 15px; margin-bottom: 12px; line-height: 1.4; } .post-img { width: 100%; border-radius: 6px; max-height: 500px; object-fit: cover; } /* Utility classes */ .hidden { display: none; } </style> </head> 
+  <body> <header> <a href="#" class="fb-logo">fiercebook</a> </header> <div class="profile-container"> <!-- Cover Photo Section --> <div class="cover-area"> <img id="cover-img" src="cover.jpg" alt="Cover"> <button class="btn-change-cover" onclick="document.getElementById('cover-upload').click()">Edit cover photo</button> <input type="file" id="cover-upload" class="hidden" accept="image/*" onchange="updateImage(this, 'cover-img')"> </div> <!-- Profile Picture & Info Banner --> <div class="profile-header-details"> <div class="pfp-wrapper"> <img id="profile-img" class="sync-pfp" src="hazel.jpg" alt="Profile"> <button class="btn-change-pfp" onclick="document.getElementById('profile-upload').click()">📷</button> <input type="file" id="profile-upload" class="hidden" accept="image/*" onchange="updateProfilePicture(this)"> </div> <div class="profile-name-area"> <h1>Hazel</h1> <p>914M friends</p> </div> </div> </div> <!-- Layout Grid --> <div class="main-content"> <!-- Left Sidebar: Intro Box --> <div class="left-col"> <div class="card"> <h2>Intro</h2> <div class="intro-item">💻 Frontend Web Developer</div> <div class="intro-item">🏠 Lives in Lopez Jaena, Miss Occ</div> <div class="intro-item">📍 From L. Jaena, Miss Occ</div> </div> </div> <!-- Right Sidebar: Feed & Publishing Box --> <div class="right-col"> <!-- Composer Box --> <div class="card"> <div class="create-post-header"> <img class="small-pfp sync-pfp" src="hazel.jpg" alt="Profile"> <textarea id="post-textarea" placeholder="What's on your mind, Jane?"></textarea> </div> <div class="post-actions-panel"> <label class="file-input-label" for="post-img-upload">🖼️ Photo</label> <input type="file" id="post-img-upload" class="hidden" accept="image/*" onchange="previewPostImage(this)"> <button class="btn-post" onclick="submitPost()">Post</button> </div> <div id="post-preview-container" style="margin-top: 10px; font-size: 12px; color: #65676b;" class="hidden"> Selected Image: <span id="preview-filename"></span> </div> </div>
+ <div id="feed-stream"> <!-- Seed Post --> <div class="card post"> <div class="post-author-info"> <img class="small-pfp sync-pfp" src="hazel.jpg" alt="Profile"> <div> <h3>Hazel</h3> <span>Just now</span> </div> </div> <div class="post-text">Hello World! I'm hiring.</div> </div> </div> </div> </div>
+ 
+   <script> 
+       let selectedPostImageBase64 = null; 
+   
+   
+   
+   function updateImage(input, elementId) { if (input.files && input.files[0]) { 
+
+
+const reader = new FileReader();
+reader.onload = function(e) {
+document.getElementById(elementId).src = e.target.result;
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+function updateProfilePicture(input) {
+if (input.files && input.files[0]) {
+const reader = new FileReader();
+reader.onload = function(e) {
+const allPfps = document.querySelectorAll('.sync-pfp');
+allPfps.forEach(img => {
+img.src = e.target.result;
+});
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+// Stores binary attachment for new post creation
+function previewPostImage(input) {
+if (input.files && input.files[0]) {
+document.getElementById('preview-filename').innerText = input.files[0].name;
+document.getElementById('post-preview-container').classList.remove('hidden');
+
+const reader = new FileReader();
+reader.onload = function(e) {
+selectedPostImageBase64 = e.target.result;
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+// Appends new custom post dynamically to top of feed DOM
+function submitPost() {
+const textTextarea = document.getElementById('post-textarea');
+const postText = textTextarea.value.trim();
+
+if (!postText && !selectedPostImageBase64) {
+alert("Please add some text or an image to post!");
+return;
+}
+
+// Capture current active avatar element src
+const currentAvatarSrc = document.getElementById('profile-img').src;
+const feedContainer = document.getElementById('feed-stream');
+
+// Construct DOM element structural block
+const postCard = document.createElement('div');
+postCard.className = 'card post';
+
+let imageHtml = '';
+if (selectedPostImageBase64) {
+imageHtml = `<img src="${selectedPostImageBase64}" class="post-img" alt="Post attachment">`;
+}
+
+postCard.innerHTML = `<div class="post-author-info"> 
+  <img class="small-pfp sync-pfp" src="${currentAvatarSrc}" alt="Profile"> 
+  <div> 
+    <h3>Hazel</h3> 
+    <span>Just now</span> 
+  </div> 
+</div>
+<div class="post-text">${escapeHTML(postText)}</div>${imageHtml}`;
+
+
+feedContainer.insertBefore(postCard,feedContainer.firstChild);
+
+// Reset values
+textTextarea.value = '';
+selectedPostImageBase64 = null;
+document.getElementById('post-img-upload').value = '';
+document.getElementById('post-preview-container').classList.add('hidden');
+
+}
+
+function escapeHTML(str) { 
+  return str.replace(/[&<>"']/g, tag => ({ 
+    '&': '&amp;', 
+    '<': '&lt;', 
+    '>': '&gt;', 
+    '"': '&quot;', 
+    "'": '&#39;' 
+  }[tag] || tag)); 
+}
+
+
+</script>
+</body>
+</html>
