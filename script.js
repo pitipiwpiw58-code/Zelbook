@@ -74,6 +74,8 @@ publishPostBtn.addEventListener('click', () => {
     } else {
         savePost(text, null);
     }
+    postImg1.style.display = "none";
+})
 });
 
 function savePost(text, imgUrl) {
