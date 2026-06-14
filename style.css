@@ -21,6 +21,8 @@ header { background: #fff; height: 56px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 .bio-section h2 { font-size: 32px; margin-bottom: 4px; }
 .bio-section p { color: #65676b; margin-bottom: 12px; }
 
+#linkP {width: 20px; height: 20px;}
+           
 .card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-bottom: 16px; }
 .post-creator { display: flex; flex-direction: column; gap: 12px; }
 .post-creator textarea { border: none; background: #f0f2f5; border-radius: 8px; padding: 16px; resize: none; height: 70px; font-size: 16px; }
