@@ -31,7 +31,7 @@
                 </div>
                 <div class="bio-section">
                     <h2 id="profile-name">Hazel</h2>
-                    <p id="profile-bio">Click here to edit your bio!</p>
+                    <p id="profile-bio">edit your bio</p>
                     <button id="edit-bio-btn" class="fb-btn">Edit Bio</button>
                 </div>
             </div>
@@ -49,78 +49,5 @@
     </main>
 
     <script src="script.js"></script>
-</body>
-</html>
-}
-
-// Stores binary attachment for new post creation
-function previewPostImage(input) {
-if (input.files && input.files[0]) {
-document.getElementById('preview-filename').innerText = input.files[0].name;
-document.getElementById('post-preview-container').classList.remove('hidden');
-
-const reader = new FileReader();
-reader.onload = function(e) {
-selectedPostImageBase64 = e.target.result;
-}
-reader.readAsDataURL(input.files[0]);
-}
-}
-
-// Appends new custom post dynamically to top of feed DOM
-function submitPost() {
-const textTextarea = document.getElementById('post-textarea');
-const postText = textTextarea.value.trim();
-
-if (!postText && !selectedPostImageBase64) {
-alert("Please add some text or an image to post!");
-return;
-}
-
-// Capture current active avatar element src
-const currentAvatarSrc = document.getElementById('profile-img').src;
-const feedContainer = document.getElementById('feed-stream');
-
-// Construct DOM element structural block
-const postCard = document.createElement('div');
-postCard.className = 'card post';
-
-let imageHtml = '';
-if (selectedPostImageBase64) {
-imageHtml = `<img src="${selectedPostImageBase64}" class="post-img" alt="Post attachment">`;
-}
-
-postCard.innerHTML = `<div class="post-author-info"> 
-  <img class="small-pfp sync-pfp" src="${currentAvatarSrc}" alt="Profile"> 
-  <div> 
-    <h3>Hazel</h3> 
-    <span>Just now</span> 
-  </div> 
-</div>
-<div class="post-text">${escapeHTML(postText)}</div>${imageHtml}`;
-
-
-feedContainer.insertBefore(postCard,feedContainer.firstChild);
-
-// Reset values
-textTextarea.value = '';
-selectedPostImageBase64 = null;
-document.getElementById('post-img-upload').value = '';
-document.getElementById('post-preview-container').classList.add('hidden');
-
-}
-
-function escapeHTML(str) { 
-  return str.replace(/[&<>"']/g, tag => ({ 
-    '&': '&amp;', 
-    '<': '&lt;', 
-    '>': '&gt;', 
-    '"': '&quot;', 
-    "'": '&#39;' 
-  }[tag] || tag)); 
-}
-
-
-</script>
 </body>
 </html>
