@@ -38,3 +38,6 @@ header { background: #fff; height: 56px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 .comment-form { display: flex; gap: 8px; margin-top: 12px; }
 .comment-form input { flex-grow: 1; padding: 8px 12px; border: none; border-radius: 20px; background: #f0f2f5; }
 
+
+#post-image-upload {display: none;}
+
