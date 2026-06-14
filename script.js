@@ -9,6 +9,14 @@ const postImageUpload = document.getElementById('post-image-upload');
 const publishPostBtn = document.getElementById('publish-post-btn');
 const feedContainer = document.getElementById('feed-container');
 
+let posttext1 = document.getElementById('post-text');
+let postImg1 = document.getElementById('post-image-upload');
+
+posttext1.addEventListener('click', function(){
+    
+    postImg1.style.display = "block";
+})
+
 // State Arrays
 let posts = JSON.parse(localStorage.getItem('fbPosts')) || [];
 
