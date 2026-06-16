@@ -142,6 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleShare(postId) {
         const post = initialPosts.find(p => p.id === postId);
+        
+        
+        
         if (post) {
             post.shares += 1;
                         
