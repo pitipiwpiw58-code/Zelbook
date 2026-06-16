@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shares: 5,
             hasLiked: false,
             comments: [
-                { commenter: "Kulot",  text: "Wow, this looks exactly like the real thing! Clean work." },
+                { commenter: "Wafa",  text: "Wow, this looks exactly like the real thing! Clean work." },
                 { commenter: "Suwang", text: "Awesome layout!" }
             ]
         }
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="comments-list">
                         ${post.comments.map(c => `
                             <div class="comment-node" style="margin-top: 8px;">
-                        <img src="${c.commenter === 'Kulot' ? 'kulot.jpg' : (c.commenter === 'Suwang' ? 'suwang.jpg' : profilePicUrl)}" alt="Avatar" class="small-avatar">
+                        <img src="${c.commenter === 'Wafa' ? 'wafa.jpg' : (c.commenter === 'Suwang' ? 'suwang.jpg' : profilePicUrl)}" alt="Avatar" class="small-avatar">
 
 
                                 <div class="comment-bubble">
@@ -252,88 +252,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Engine Kickoff
     renderPosts();
 });
-    if(localStorage.getItem('fbBio')) document.getElementById('profile-bio').textContent = localStorage.getItem('fbBio');
-    renderPosts();
-});
-
-// Image to Base64 Handler (To store images in localStorage)
-function handleImage(input, imgElement, storageKey) {
-    const file = input.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            imgElement.src = e.target.result;
-            localStorage.setItem(storageKey, e.target.result);
-        }
-        reader.readAsDataURL(file);
-    }
-}
-
-// Publish Post
-publishPostBtn.addEventListener('click', () => {
-    const text = postText.value.trim();
-    if (text === '') return;
-
-    const file = postImageUpload.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            savePost(text, e.target.result);
-        };
-        reader.readAsDataURL(file);
-    } else {
-        savePost(text, null);
-    }
-    
-});
-
-function savePost(text, imgUrl) {
-    const newPost = { id: Date.now(), text, imgUrl, comments: [] };
-    posts.unshift(newPost);
-    localStorage.setItem('fbPosts', JSON.stringify(posts));
-    postText.value = '';
-    postImageUpload.value = '';
-    renderPosts();
-}
-
-// Render Feed
-function renderPosts() {
-    feedContainer.innerHTML = '';
-    posts.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.classList.add('post');
-        
-        let imgHTML = post.imgUrl ? `<div class="post-img"><img src="${post.imgUrl}" alt="Post Image"></div>` : '';
-        let commentsHTML = post.comments.map(c => `<div class="comment">${c}</div>`).join('<br>');
-
-        postDiv.innerHTML = `
-            <div class="post-header">
-                <img src="${profilePic.src}" alt="Author">
-                <div><h4>${document.getElementById('profile-name').textContent}</h4><small>Just now</small></div>
-            </div>
-            <div class="post-text">${post.text}</div>
-            ${imgHTML}
-            <div class="comments-section">
-                <div class="comments-list">${commentsHTML}</div>
-                <div class="comment-form">
-                    <input type="text" placeholder="Write a comment..." id="input-${post.id}">
-                    <button class="fb-btn active" onclick="addComment(${post.id})">Comment</button>
-                </div>
-            </div>
-        `;
-        feedContainer.appendChild(postDiv);
-    });
-}
-
-// Add Comment
-window.addComment = function(postId) {
-    const inputVal = document.getElementById(`input-${postId}`).value.trim();
-    if (inputVal === '') return;
-
-    const post = posts.find(p => p.id === postId);
-    if (post) {
-        post.comments.push(inputVal);
-        localStorage.setItem('fbPosts', JSON.stringify(posts));
-        renderPosts();
-    }
-}
