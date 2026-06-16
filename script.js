@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hasLiked: false,
             comments: [
                 { commenter: "Wafa",  text: "Wow, this looks exactly like the real thing! Clean work." },
-                { commenter: "Suwang", text: "Awesome layout!" }
+                { commenter: "Suwang", text: "Wee! wa ka kuyapee, unsa mn ng naas ubos? gaBug mn 👇?" }
             ]
         }
     ];
