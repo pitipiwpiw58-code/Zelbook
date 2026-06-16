@@ -3,37 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiercebook Profile</title>
+    <title>Profile Page</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo">fiercebook</div>
-            <div class="nav-links"><span>Profile</span></div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="nav-left">
+            <i class="fab fa-facebook logo"></i>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search Facebook">
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn"><i class="fas fa-bars"></i></button>
+            <button class="nav-btn"><i class="fab fa-facebook-messenger"></i></button>
+            <button class="nav-btn"><i class="fas fa-bell"></i></button>
+            <img src="navBtn.png" alt="Nav Profile" class="nav-avatar">
         </div>
     </header>
 
-    <main class="profile-container">
-        <!-- Cover & Profile Photo Section -->
-        <div class="profile-header">
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Header Section (Photos & Name) -->
+        <section class="profile-header-card">
+            <!-- Cover Photo Area -->
             <div class="cover-container">
-                <img id="cover-pic" src="cover.jpg" alt="Cover Photo">
-                <label for="cover-upload" class="edit-btn">Edit Cover</label>
-                <input type="file" id="cover-upload" accept="image/*" style="display: none;">
+                <img id="cover-img" src="cover.jpg" alt="Cover">
+                <label for="cover-upload" class="edit-cover-btn">
+                    <i class="fas fa-camera"></i> Edit cover
+                </label>
+                <input type="file" id="cover-upload" accept="image/*" hidden>
             </div>
 
-            <div class="profile-info">
+            <!-- Profile Info Area -->
+            <div class="profile-info-bar">
                 <div class="avatar-container">
-                    <img id="profile-pic" src="hazel.jpg" alt="Profile Picture">
-                    <label for="profile-upload" class="edit-avatar-btn">📷</label>
-                    <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                    <img id="profile-img" src="hazel.jpg" alt="Avatar">
+                    <label for="profile-upload" class="edit-avatar-btn">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="profile-upload" accept="image/*" hidden>
                 </div>
-                <div class="bio-section">
-                    <h2 id="profile-name">Hazel</h2>
-                    <a href="https://vt.tiktok.com/ZSQQUkfEY/"><img src="link.png" id="linkP"><p>Tiktok video link</p></a>
-                        <p id="profile-bio">edit your bio</p>
-                    <button id="edit-bio-btn" class="fb-btn">Edit Bio</button>
+                
+                <div class="profile-text-details">
+                    <h1 class="profile-name">Hazel Jean</h1>
+                    <p class="friends-count">918M friends</p>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Add to story</button>
+                    <button class="btn btn-secondary" id="edit-profile"><i class="fas fa-pen"></i> Edit profile</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Split Grid -->
+        <div class="profile-grid">
+            
+            <!-- Left Sidebar (Intro & Bio) -->
+            <aside class="sidebar-left">
+                <div class="card intro-card">
+                    <h2>Intro</h2>
+                    
+                    <!-- Bio Component -->
+                    <div class="bio-section">
+                        <p id="bio-text">Coding the future, one bug at a time. 🚀</p>
+                        <textarea id="bio-input" class="hidden" maxlength="101"></textarea>
+                        <button id="edit-bio-btn" class="btn btn-full">Edit bio</button>
+                        <div id="bio-actions" class="hidden">
+                            <span id="bio-char-count">101 characters remaining</span>
+                            <div class="bio-buttons">
+                                <button id="cancel-bio-btn" class="btn btn-secondary">Cancel</button>
+                                <button id="save-bio-btn" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intro Details -->
+                    <ul class="intro-list">
+                        <li><i class="fas fa-briefcase"></i> Software Engineer at <strong>Tech Corp</strong></li>
+                        <li><i class="fas fa-graduation-cap"></i> Studied Computer Science at <strong>Davao City</strong></li>
+                        <li><i class="fas fa-home"></i> Lives in <strong>Davao City, Philippines</strong></li>
+                        <li><i class="fas fa-map-marker-alt"></i> From <strong>Lopez Jaena, Miss Occ</strong></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Status: <strong id="status-input1">Engaged with me</strong></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Right Main Content Feed -->
+            <section class="feed-area">
+                <!-- Create Post Box -->
+                <div class="card create-post-card">
+                    <div class="post-input-row">
+                        <img src="hazel.jpg" alt="Avatar" class="small-avatar">
+                        <textarea id="status-input" placeholder="What's on your mind, Jean?"></textarea>
+                    </div>
+                    <hr class="divider">
+                    <div class="post-options-row">
+                        <button class="option-btn red"><i class="fas fa-video"></i> Live video</button>
+                        <button class="option-btn green" id="post-image-upload"><i class="fas fa-images"></i> Photo/video</button>
+                        <button class="option-btn yellow"><i class="fas fa-smile"></i> Feeling/activity</button>
+                    </div>
+                    <button id="submit-post-btn" class="btn btn-primary btn-full hidden">Post</button>
+                </div>
+
+                <!-- Feed Posts Container -->
+                <div id="posts-container">
+                    <!-- Dynamic posts go here via JavaScript -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
                 </div>
             </div>
         </div>
